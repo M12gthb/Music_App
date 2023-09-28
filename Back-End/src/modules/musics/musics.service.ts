@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMusicDto } from './dto/create-music.dto';
-import { UpdateMusicDto } from './dto/update-music.dto';
 
 @Injectable()
 export class MusicsService {
@@ -12,15 +11,7 @@ export class MusicsService {
     return `This action returns all musics`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} music`;
-  }
-
-  update(id: number, updateMusicDto: UpdateMusicDto) {
-    return `This action updates a #${id} music`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} music`;
   }
 }
