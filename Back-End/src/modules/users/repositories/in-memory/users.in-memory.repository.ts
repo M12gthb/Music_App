@@ -3,7 +3,7 @@ import { CreateUserDto } from '../../Dto/create-user.dto';
 import { User } from '../../entities/user.entitie';
 import { UsersRepository } from '../user.repository';
 import { UpdateUserDto } from '../../Dto/update-user.dto';
-import { triggerAsyncId } from 'async_hooks';
+import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class UsersInMemoryRepository implements UsersRepository {
@@ -12,11 +12,11 @@ export class UsersInMemoryRepository implements UsersRepository {
     const newUser = new User();
     Object.assign(newUser, { ...data });
     this.database.push(newUser);
-    return newUser;
+    return plainToInstance(User, newUser);
   }
 
   async findAll(): Promise<User[]> {
-    return this.database;
+    return plainToInstance(User, this.database);
   }
 
   async findByEmail(email: string): Promise<User> {
@@ -26,7 +26,7 @@ export class UsersInMemoryRepository implements UsersRepository {
 
   async findOne(id: string): Promise<User> {
     const user = this.database.find((user) => user.id === id);
-    return user;
+    return plainToInstance(User, user);
   }
 
   async update(data: UpdateUserDto, id: string): Promise<User> {
@@ -35,7 +35,7 @@ export class UsersInMemoryRepository implements UsersRepository {
       ...this.database[userIndex],
       ...data,
     };
-    return this.database[userIndex];
+    return plainToInstance(User, this.database[userIndex]);
   }
 
   async remove(id: string): Promise<void> {
