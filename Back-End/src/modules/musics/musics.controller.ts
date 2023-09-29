@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { MusicsService } from './musics.service';
 import { CreateMusicDto } from './dto/create-music.dto';
 
@@ -15,8 +7,8 @@ export class MusicsController {
   constructor(private readonly musicsService: MusicsService) {}
 
   @Post()
-  create(@Body() createMusicDto: CreateMusicDto) {
-    return this.musicsService.create(createMusicDto);
+  create(@Body() createMusicDto: CreateMusicDto, @Param('id') id: string) {
+    return this.musicsService.create(createMusicDto, id);
   }
 
   @Get()
