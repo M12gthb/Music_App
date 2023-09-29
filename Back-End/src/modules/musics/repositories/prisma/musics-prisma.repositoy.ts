@@ -3,6 +3,7 @@ import { MusicRepository } from '../music.repository';
 import { CreateMusicDto } from '../../dto/create-music.dto';
 import { Music } from '../../entities/music.entity';
 import { PrismaService } from 'src/modules/database/prisma.service';
+import { UpdateMusicDto } from '../../dto/update-music.dto';
 
 @Injectable()
 export class MusicPrismaRepository implements MusicRepository {
@@ -38,6 +39,13 @@ export class MusicPrismaRepository implements MusicRepository {
 
   async findAll(): Promise<Music[]> {
     const music = await this.prisma.music.findMany();
+    return music;
+  }
+  async update(data: UpdateMusicDto, musicId: string): Promise<Music> {
+    const music = await this.prisma.music.update({
+      where: { id: musicId },
+      data: { ...data },
+    });
     return music;
   }
 }
