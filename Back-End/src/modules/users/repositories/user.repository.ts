@@ -9,4 +9,7 @@ export abstract class UsersRepository {
   abstract findOne(id: string): Promise<User | null>;
   abstract update(data: UpdateUserDto, id: string): Promise<User>;
   abstract remove(id: string): Promise<void>;
+  abstract findByToken(token: string): Promise<User | null>;
+  abstract updateToken(email: string, resetToken: string): Promise<void>;
+  abstract updatePassword(id: string, password: string): Promise<void>;
 }
