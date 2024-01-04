@@ -5,15 +5,18 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
+
   const config = new DocumentBuilder()
-    .setTitle('Musics App')
-    .setDescription('listen your musics')
-    .setVersion('1.0.0')
+    .setTitle('Musics app')
+    .setDescription(' Listen your musics')
+    .setVersion('1.0')
     .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
   app.useGlobalPipes(
     new ValidationPipe({ whitelist: true }),
     new ValidationPipe({
@@ -21,6 +24,6 @@ async function bootstrap() {
       transformOptions: { groups: ['transform'] },
     }),
   );
-  await app.listen(3000);
+  await app.listen(3004);
 }
 bootstrap();

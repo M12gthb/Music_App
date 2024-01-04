@@ -6,7 +6,7 @@ import { SendEmailDto } from 'src/modules/users/Dto/send-mail.dto';
 const mailGenerator = new Mailgen({
   theme: 'default',
   product: {
-    name: 'Music App',
+    name: 'M6 T16',
     link: 'http://localhost:3000',
   },
 });
@@ -48,7 +48,7 @@ export class MailService {
           button: {
             color: '#DC4D2F',
             text: 'Reset your password',
-            link: `http://localhost:3001/users/resetPassword/${resetToken}`,
+            link: `http://localhost:3000/resetPassword/${resetToken}`,
           },
         },
         outro:
