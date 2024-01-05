@@ -8,10 +8,18 @@ export const MusicSchema = z.object({
   genre: z.string(),
   year: z.string(),
   cover_image: z.string(),
-  music_url: z.string(),
+  music_url: z.string()
 });
 
 export type MusicData = z.infer<typeof MusicSchema>;
+
+export const MusicSchemaRequest = MusicSchema.omit({
+  id: true,
+  cover_image: true,
+  music_url: true
+});
+
+export type musicRequest = z.infer<typeof MusicSchemaRequest>;
 
 export interface CurrentMusicType extends MusicData {
   duration?: number;
