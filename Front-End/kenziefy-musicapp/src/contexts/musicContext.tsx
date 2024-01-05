@@ -1,11 +1,4 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import api from "@/services/api";
 import { MusicData, musicRequest } from "@/schemas/music.schema";
@@ -43,16 +36,12 @@ export function MusicProvider({ children }: Props) {
     artist: "",
     album: "",
     genre: "",
-    year: "",
+    year: ""
   });
   const [music, setMusic] = useState<File | null>(null);
   const [coverImage, setCoverImage] = useState<File | null>(null);
 
-  const uploadFiles = async (
-    musicId: string,
-    music: File,
-    coverImage: File
-  ) => {
+  const uploadFiles = async (musicId: string, music: File, coverImage: File) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     const fd = new FormData();
     if (music.name.includes("mp3") && coverImage.name.includes("jpg")) {
@@ -93,9 +82,8 @@ export function MusicProvider({ children }: Props) {
         setCoverImage,
         musicInfo,
         setMusicInfo,
-        createMusic,
-      }}
-    >
+        createMusic
+      }}>
       {children}
     </MusicContext.Provider>
   );
