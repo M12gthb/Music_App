@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3004"
+  baseURL: "https://kenziefy-musicapp.onrender.com",
+  timeout: 20000
 });
 
 export default api;

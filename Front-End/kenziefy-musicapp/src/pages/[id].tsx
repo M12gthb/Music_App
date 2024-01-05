@@ -17,8 +17,7 @@ const Music: NextPage<MusicProps> = ({ music }: MusicProps) => {
         className="btn-primary m-6"
         onClick={() => {
           router.push("/");
-        }}
-      >
+        }}>
         Voltar
       </button>
 
@@ -31,8 +30,8 @@ const Music: NextPage<MusicProps> = ({ music }: MusicProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { id: "5f7495f8-f18d-4d35-8707-a3236dd6e5d8" } }],
-    fallback: "blocking",
+    paths: [],
+    fallback: "blocking"
   };
 };
 
