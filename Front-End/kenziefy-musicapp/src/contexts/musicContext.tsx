@@ -1,7 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import api from "@/services/api";
-import { MusicData, musicRequest } from "@/schemas/music.schema";
+import { MusicData, MusicRequest } from "@/schemas/music.schema";
 import { parseCookies } from "nookies";
 import Toast from "@/components/toast";
 
@@ -12,8 +12,8 @@ interface Props {
 interface MusicProviderData {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
-  musicInfo: musicRequest;
-  setMusicInfo: Dispatch<SetStateAction<musicRequest>>;
+  musicInfo: MusicRequest;
+  setMusicInfo: Dispatch<SetStateAction<MusicRequest>>;
   coverImage: File | null;
   setCoverImage: Dispatch<SetStateAction<File | null>>;
   music: File | null;

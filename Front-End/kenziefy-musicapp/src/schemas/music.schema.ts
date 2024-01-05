@@ -13,13 +13,13 @@ export const MusicSchema = z.object({
 
 export type MusicData = z.infer<typeof MusicSchema>;
 
-export const MusicSchemaRequest = MusicSchema.omit({
+const MusicSchemaRequest = MusicSchema.omit({
   id: true,
   cover_image: true,
   music_url: true
 });
 
-export type musicRequest = z.infer<typeof MusicSchemaRequest>;
+export type MusicRequest = z.infer<typeof MusicSchemaRequest>;
 
 export interface CurrentMusicType extends MusicData {
   duration?: number;
